@@ -1,6 +1,6 @@
 1. 
 ```
-docker build . -t jervis/nginx
+docker build -t jervis/nginx .
 ```
 
 2. 
