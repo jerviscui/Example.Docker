@@ -46,3 +46,14 @@ docker run -ti --rm --volumes-from redis_replica1 ubuntu cat /var/log/redis/redi
 ```
 docker run -d -h redis_replica2 --name redis_replica2 --net express jervis/redis_replica
 ```
+
+### Nodejs
+1. 创建 node 镜像：
+```
+docker build -t jervis/nodejs .
+```
+
+2. 运行 node：
+```
+docker run -d --name nodeapp -p 3000:3000 --net express jervis/nodejs
+```
