@@ -57,3 +57,24 @@ docker build -t jervis/nodejs .
 ```
 docker run -d --name nodeapp -p 3000:3000 --net express jervis/nodejs
 ```
+
+3. 访问站点
+```
+curl http://localhost:3000
+```
+
+### Logstash
+1. 创建 logstash 镜像：
+```
+docker build -t jervis/logstash .
+```
+
+2. 运行 logstash，并挂载 redis_primary 和 nodeapp 的卷用于获取日志：
+```
+docker run -d --name logstash --volumes-from redis_primary --volumes-from nodeapp jervis/logstash
+```
+
+3. logstash 将内容输出到标准输出，监控容器的标准输出：
+```
+docker logs -f logstash
+```
